@@ -5,8 +5,10 @@
 
 Matrix::Matrix(const Matrix& other)
     :num_rows(other.num_rows), num_columns(other.num_columns),
-     buf(other.buf)
+     buf(new int[num_rows * num_columns])
 {
+    for (size_t i = 0; i < num_rows * num_columns; ++i)
+        buf[i] = other.buf[i];
 }
 
 Matrix::Matrix(Matrix&& other)
